@@ -1,0 +1,29 @@
+--- hldig-0.2.0/installdir/rundig.rh	Wed Apr 21 22:47:58 1999
++++ hldig-0.2.0/installdir/rundig	Wed May 12 12:16:31 1999
+@@ -64,11 +64,24 @@
+ if [ "`ls -t $COMMONDIR/english.0 $COMMONDIR/word2root.db 2>/dev/null | sed 1q`" = \
+ 	"$COMMONDIR/english.0" ]
+ then
+-    $BINDIR/hlfuzzy $opts endings
++      cat <<EOF
++ Warning:
++       The following is a lengthly process, but it is run only
++       the first time you start hl://Dig. Initializing database...
++EOF
++     $BINDIR/hlfuzzy $opts endings
+ fi
+ 
+ if [ "`ls -t $COMMONDIR/synonyms $COMMONDIR/synonyms.db 2>/dev/null | sed 1q`" = \
+ 	"$COMMONDIR/synonyms" ]
+ then
++     cat <<EOF
++ Warning:
++       The following is a lengthly process, but it is run only
++       the first time you start hl://Dig. Initializing database...
++EOF
+     $BINDIR/hlfuzzy $opts synonyms
+ fi
++
++#@BIN_DIR@/hlfuzzy $verbose metaphone
++#@BIN_DIR@/hlfuzzy $verbose soundex
+
